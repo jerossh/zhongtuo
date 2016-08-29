@@ -61,11 +61,11 @@ exports.new = function(req, res) {
 //      type: 'image/jpeg' } }
 
 exports.saveBlogImg = function(req, res, next) {
+  var imgData =  req.files.blogImg
+  var filePath = imgData.path
+  var originalFilename = imgData.originalFilename
   console.log(req.files);
   if (originalFilename) {
-    var imgData =  req.files.blogImg
-    var filePath = imgData.path
-    var originalFilename = imgData.originalFilename
     fs.readFile(filePath, function(err, data) {
       if (err) console.error(err);
       var timetamp = Date.now()
@@ -75,6 +75,7 @@ exports.saveBlogImg = function(req, res, next) {
       fs.writeFile(newPath, data, function(err) {
         if (err) console.error(err);
         req.img = img
+        console.log("添加图片");
         next()
       })
     })

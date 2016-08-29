@@ -11,7 +11,6 @@ var ObjectId = Schema.Types.ObjectId
 var UserSchema = new Schema({
   name: String,
   password: String,
-  code: Number
 })
 
 module.exports = UserSchema
