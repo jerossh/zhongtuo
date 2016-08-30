@@ -45,15 +45,21 @@ module.exports= function(app) {
   // 后台界面
   app.get('/admin', Admin.adminPanel)
 
+  app.get('/admin/images', User.userRequire, Admin.getImg)
+  app.delete('/admin/images', User.userRequire, Admin.deleteImg)
+
   // 新闻博客
-  app.get('/admin/blog',Blog.new)
-  app.post('/admin/blog',Blog.saveBlogImg, Blog.saveBlog)
-  app.delete('/admin/blog',Blog.removeBlog)
+  app.get('/admin/blog',User.userRequire, Blog.new)
+  app.post('/admin/blog',User.userRequire, Blog.saveBlogImg, Blog.saveBlog)
+  app.delete('/admin/blog',User.userRequire, Blog.removeBlog)
 
   // 新闻分类
-  app.get('/admin/category',Category.new)
-  app.post('/admin/category',Category.saveCategory)
-  app.delete('/admin/category',Category.removeCategory)
+  app.get('/admin/category',User.userRequire, Category.new)
+  app.post('/admin/category',User.userRequire, Category.saveCategory)
+  app.delete('/admin/category',User.userRequire, Category.removeCategory)
 
+  app.get('/admin/user',User.userRequire, function(req, res) {
+  res.render('admin-user', {title: '用户系统'})
+})
 
 }

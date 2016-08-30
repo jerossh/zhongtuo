@@ -14,6 +14,8 @@ block content
                 .portlet-body.form
                   form.form-horizontal(action="/admin/blog", method="post", enctype="multipart/form-data", role='form')
                     .form-body
+                      if blog._id
+                        input.form-control(type="hidden", name="blog[_id]", value=blog._id)
                       .form-group 
                         label.col-md-2.control-label(for="title") 文章标题
                         .col-md-10
@@ -43,14 +45,12 @@ block content
                             input.form-control(type="text", placeholder="输入分类，4个字左右", name="blog[categoryName]")
                       .form-group
                         label.col-md-2.control-label(for="blogImg") 文章图片
-                      
+                        .col-md-10
+                          input#blogfile(type="file", name="blogImg")
                         if blog.img
-                          .col-md-1
+                          .col-md-offset-2.col-md-1
                             img.img-responsive(src=blog.img, name="blog[img]")
-                        else
-                          .col-md-10
-                            input#blogfile(type="file", name="blogImg")
-                        
+                      
                     .form-actions
                       .row
                         .col-md-offset-2.col-md-10
@@ -80,13 +80,16 @@ block content
                       each item in blogs
                         tr(class="item-id-"+item._id)
                           td #{item.title}
-                          td #{item.category.name}
+                          if item.category
+                            td #{item.category.name}
+                          else 
+                            td undefined
                           td
                             .kapu-thumbnail
                               img.kapu-thumbnail(src=item.img width="50")
                           td #{moment(item.meta.createdAt).format("MM/DD/YY")}
                           td
-                            button.btn.btn-info 查看
+                            button.btn.btn-info.view_blog(data-id="#{item._id}")查看
                             button.btn.btn-warning.change(data-id="#{item._id}") 修改                    
                             button.btn.btn-danger.del(data-id="#{item._id}") 删除
                 

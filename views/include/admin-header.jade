@@ -8,7 +8,7 @@ html
       .sidebar-left-content.nano-content
         ul.nav.sidebar-menu
           li
-            a.accordion-toggle(href='/admin')
+            a.accordion-toggle(href='#')
               span.sb-menu-icon.fa.fa-dashboard
               span.sidebar-title 概览
             ul.nav.sub-nav
@@ -18,20 +18,20 @@ html
               li
                 a(href='/', target="_blank")
                   | 查看站点
-          li.disabled
-            a.accordion-toggle(href='/admin/slide')
+          li
+            a.accordion-toggle(href='#')
               span.sb-menu-icon.fa.fa-picture-o
-              span.sidebar-title 幻灯片
-            //- ul.nav.sub-nav
-            //-   li
-            //-     a(href='/admin/slide')
-            //-       | 添加幻灯片
-            //-   li
-            //-     a(href='#')
-            //-       | 管理幻灯片
+              span.sidebar-title 多媒体
+            ul.nav.sub-nav
+              li.disabled
+                a(href='/admin/slide')
+                  | 管理幻灯片 
+              li
+                a(href='/admin/images')
+                  | 管理图片库
 
           li
-            a.accordion-toggle(href='/admin/blog')
+            a.accordion-toggle(href='#')
               span.sb-menu-icon.fa.fa-desktop
               span.sidebar-title 新闻资讯
             ul.nav.sub-nav
@@ -42,7 +42,7 @@ html
                 a(href='/admin/category')
                   | 管理分类
           li
-            a.accordion-toggle(href='/admin/user')
+            a.accordion-toggle(href='#')
               span.sb-menu-icon.fa.fa-cogs
               span.sidebar-title 用户管理
             ul.nav.sub-nav
