@@ -161,6 +161,7 @@ exports.blog = function(req, res) {
       Blog.count(function(err, count) {
         res.render('blog', {
           title: "新闻页面",
+          subheading: "高效快捷办理针对于企业各项需求一站式服务丰富的招聘资源，优越的融资渠道，为企业发展提供最有力的支持与帮助",
           totalPage: Math.ceil(count / perCount),
           blogs: _blogs,
           currentPage: (page + 1)
@@ -181,6 +182,7 @@ exports.blog = function(req, res) {
 
         res.render('blog', {
           title: "新闻页面",
+          subheading: "高效快捷办理针对于企业各项需求一站式服务丰富的招聘资源，优越的融资渠道，为企业发展提供最有力的支持与帮助",
           totalPage: Math.ceil(count / perCount),
           blogs: _blogs,
           currentPage: (page + 1)
@@ -200,7 +202,8 @@ exports.article = function(req, res) {
   }).exec(function(err, blogData){
     _blog = blogData
     res.render('article', {
-      title: "新闻页面",
+      title: "文章页面",
+      subheading: "了解如何成为优秀的企业家",
       blog: _blog
     })
   })

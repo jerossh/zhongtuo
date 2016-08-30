@@ -18,14 +18,18 @@ block content
                       th 公司
                       th 名字
                       th 电话
+                      th 地区
+                      th 信息
                       th 时间
                       th 删除
                   tbody
                     each item in clients
                       tr(class="item-id-#{item._id}")
-                        td #{item.query}
                         td #{item.name}
                         td #{item.tel}
+                        td #{item.mail}
+                        td #{item.address}
+                        td #{item.info}
                         td #{moment(item.createAt).format("YYYY/MM/DD")}
                         td
                           button.btn.btn-danger.del(type="button", data-id="#{item._id}") 删除
