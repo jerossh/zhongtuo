@@ -1,3 +1,12 @@
 
-## 关于使用
-该源码是我制作公司官网的时候用的，基于express + jade + mongodb
+## About
+
+This program creates by express + jade + mongodb
+
+## History
+
+* 2016-09-04  Finish v0.1 
+* 2016-09-08  Add eslint
+
+## License
+MIT
